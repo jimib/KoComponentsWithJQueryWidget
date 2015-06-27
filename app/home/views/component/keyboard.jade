@@ -1,0 +1,9 @@
++addScript("/js/component/keyboard.js")
+
+template#component-keyboard
+	//binding of the widget to the model - can limit what we expose to the widget
+	component(data-bind="widget:{keyboard:{target:target}}")
+		ul.keys.clearfix
+			each key in "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,cancel,submit".split(",")
+				li(class="key-"+key,data-keyboard-key=key) #{key}
+		

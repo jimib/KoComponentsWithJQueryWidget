@@ -1,0 +1,47 @@
+mixin addScript( src )
+	script(src=src,type="text/javascript")
+
+html
+	head
+		link(href="/css/index.css",rel="stylesheet")
+	
+		+addScript("/js/jquery.js")
+		+addScript("/js/jquery-ui.min.js")
+		+addScript("/js/knockout.js")
+		+addScript("/js/underscore.js")
+		
+		+addScript("/js/common.js")
+		+addScript("/js/eventdispatcher.js")
+		+addScript("/js/index.js")
+	body
+		//add the components we need in the page
+		include component/pinpad
+		include component/keyboard
+		
+		h1 Hello World!
+		
+		h2 Model Variables
+		p(data-bind="text:'First Name: ' + nameFirst()")
+		p(data-bind="text:'Last Name: ' + nameLast()")
+		p(data-bind="text:'Global PinCode Reference:' + pinCode()")
+		
+		hr
+		
+		//Input with Max Length set to 10
+		pinpad(options="maxLength:10",data-bind="event:{submit:submitPinCode}", style="float:left")
+		
+		//Input with Max Length set to 5 and bound to a root 
+		pinpad(params="input:pinCode",options="maxLength:5",data-bind="event:{submit:submitPinCode}", style="float:left")
+		
+		form(style="width:1300px;float:right;")
+			h1 A Form with multiple inputs and a Single Keyboard
+			label(for="firstName") First name:
+			input#firstName(data-bind="event:{focus:dispatchEvent({type:'keyboardFocus',input:$element})},value:nameFirst,valueUpdate:'input'")
+			br
+			br
+			label(for="lastName") Last name:
+			input#lastName(data-bind="event:{focus:dispatchEvent({type:'keyboardFocus',input:$element})},value:nameLast,valueUpdate:'input'")
+			br
+			br
+
+			keyboard(options="excludeKeys:['enter']",data-bind="onEvent:{keyboardFocus:function(model,evt){$element.model.keyboard.target(evt.input);}}")

@@ -1,0 +1,15 @@
++addScript("/js/component/pinpad.js")
+
+template#component-pinpad
+	//binding of the widget to the model - can limit what we expose to the widget
+	component(data-bind="widget:{pinpad:{maxLength:5,input:input,inputLength:inputLength}}")
+		p Local PinCode Reference:
+		p(data-bind="text:input",style="height:20px")
+		
+		ul.progress
+		
+		ul.keys.clearfix
+			each key in [1,2,3,4,5,6,7,8,9,"reset",0,"submit"]
+				li(class="key-"+key,data-pinpad-key=key) #{key}
+		
+		

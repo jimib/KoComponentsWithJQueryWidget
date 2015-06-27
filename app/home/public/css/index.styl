@@ -1,0 +1,86 @@
+.clearfix
+	overflow auto
+	zoom 1
+
+ignorePadding()
+	-webkit-box-sizing border-box
+	-moz-box-sizing border-box
+	box-sizing border-box
+	
+unselectable()
+	-webkit-touch-callout none
+	-webkit-user-select none
+	-khtml-user-select none
+	-moz-user-select none
+	-ms-user-select none
+	user-select none
+	
+body
+	font-size 25px
+	font-family helvetica
+	
+form
+	input, label
+		font-size 30px
+
+pinpad
+	ul.progress
+		margin 0px
+		padding 30px 0px 0px 0px
+		
+		li
+			width 20px
+			height 20px
+			margin 0px 5px 0px 5px
+			border 1px solid #e4e4e4
+			border-radius 10px
+			display inline-block
+			background-color #666
+			&.enabled
+				background-color #00ff00
+				
+	ul.keys
+		list-style none
+		margin 0px
+		padding 0px
+		width 400px
+		
+		li
+			unselectable()
+			ignorePadding()
+			float left
+		
+			background-color #ddd
+			
+			margin 0px 10px 10px 10px
+			padding 30px 0px 0px 0px
+			
+			width 100px
+			height 100px
+			border-radius 20px
+			
+			text-align center
+			
+keyboard
+	ul.keys
+		list-style none
+		margin 0px
+		padding 0px
+		width 1200px
+		
+		li
+			unselectable()
+			ignorePadding()
+			float left
+		
+			background-color #ddd
+			
+			margin 0px 10px 10px 10px
+			padding 30px
+			
+			width 150px
+			height 100px
+			border-radius 20px
+			
+			text-align center
+	
