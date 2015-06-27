@@ -2,7 +2,7 @@
 
 template#component-pinpad
 	//binding of the widget to the model - can limit what we expose to the widget
-	component(data-bind="widget:{pinpad:{maxLength:5,input:input,inputLength:inputLength}}")
+	component(data-bind="widget:{pinpad:{maxLength:5}}")
 		p Local PinCode Reference:
 		p(data-bind="text:input",style="height:20px")
 		
