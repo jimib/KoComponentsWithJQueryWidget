@@ -1,12 +1,3 @@
-ko.bindingHandlers.locals = {
-	init : function( element, valueAccessor, allBindings, viewModel, bindingContext ){
-		var locals = valueAccessor();
-		for( var id in locals ){
-			element[id] = locals[id];
-		}
-	}
-}
-
 ko.bindingHandlers.widget = {
 	init : function( element, valueAccessor, allBindings, viewModel, bindingContex ){
 		//reach up to the parent pinpad and get the options from it
