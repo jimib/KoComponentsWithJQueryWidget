@@ -20,17 +20,19 @@ ko.components.register("pinpad", {
 $.widget("pixel.pinpad", {
 	options : {
 		maxLength: 4,
-		input : null,
-		inputLength : null
+		viewModel : null
 	},
 	submit : function(){
-		this.element.parents("pinpad").trigger("submit", this.options.input());
+		this.element.parents("pinpad").trigger("submit", this.viewModel.input());
 	},
 	_create : function(){
-		var self = this,
-			maxLength = self.options.maxLength,
-			input = self.options.input,
-			inputLength = self.options.inputLength;
+		var self = this;
+		
+		self.viewModel = self.options.viewModel;
+			
+		var	maxLength = self.options.maxLength,
+			input = self.viewModel.input,
+			inputLength = self.viewModel.inputLength;
 			
 		//display our options
 		this.element.append("<p>"+JSON.stringify(_.pick(self.options,"maxLength"))+"</p>")

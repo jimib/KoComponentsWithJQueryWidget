@@ -8,13 +8,15 @@ ko.components.register("keyboard", {
 
 $.widget("pixel.keyboard", {
 	options : {
-		target : null,
+		viewModel : null,
 		excludeKeys : []
 	},
 	_create : function(){
-		var self = this,
-			maxLength = self.options.maxLength,
-			target = self.options.target;
+		var self = this;
+		self.viewModel = self.options.viewModel;
+			
+		var	maxLength = self.options.maxLength,
+			target = self.viewModel.target;
 		
 		//display our options
 		this.element.append("<p>"+JSON.stringify(_.pick(self.options,"excludeKeys"))+"</p>")

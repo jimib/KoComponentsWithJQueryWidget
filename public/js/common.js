@@ -28,9 +28,11 @@ ko.bindingHandlers.widget = {
 		
 				//merge these values
 				for( var property in optionsCustom ){
-					console.log("\t"+property);
 					options[property] = optionsCustom[property];
 				}
+			
+				//add the model to the options
+				options.viewModel = viewModel;
 			
 				//apply the widget
 				$(element)[id]( options );
