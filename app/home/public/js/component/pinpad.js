@@ -25,14 +25,14 @@ $.widget("pixel.pinpad", {
 	submit : function(){
 		this.element.parents("pinpad").trigger("submit", this.viewModel.input());
 	},
+	viewModel : function(){
+		return (this.options || {}).viewModel;
+	},
 	_create : function(){
-		var self = this;
-		
-		self.viewModel = self.options.viewModel;
-			
-		var	maxLength = self.options.maxLength,
-			input = self.viewModel.input,
-			inputLength = self.viewModel.inputLength;
+		var self = this,
+			maxLength = self.options.maxLength,
+			input = self.viewModel().input,
+			inputLength = self.viewModel().inputLength;
 			
 		//display our options
 		this.element.append("<p>"+JSON.stringify(_.pick(self.options,"maxLength"))+"</p>")

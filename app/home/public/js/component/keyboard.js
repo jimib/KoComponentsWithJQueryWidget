@@ -11,12 +11,13 @@ $.widget("pixel.keyboard", {
 		viewModel : null,
 		excludeKeys : []
 	},
+	viewModel : function(){
+		return (this.options || {}).viewModel;
+	},
 	_create : function(){
-		var self = this;
-		self.viewModel = self.options.viewModel;
-			
-		var	maxLength = self.options.maxLength,
-			target = self.viewModel.target;
+		var self = this,
+			maxLength = self.options.maxLength,
+			target = self.viewModel().target;
 		
 		//display our options
 		this.element.append("<p>"+JSON.stringify(_.pick(self.options,"excludeKeys"))+"</p>")
