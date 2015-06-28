@@ -25,16 +25,33 @@ $.widget("pixel.keyboard", {
 		//link to the parent element
 		var $keyboard = this.element.parents("keyboard");
 		
+		target.subscribe(function(value){
+			if( target() ){
+				//remove binding
+				$( target() ).unbind("blur", onBlur );
+			}
+		},null,"beforeChange")
+		
 		//if the target changes then we change the state of the keyboard
 		target.subscribe(function(value){
 			if( value ){
 				$keyboard.fadeIn();
+				//add binding
+				$( target() ).bind("blur", onBlur );
 			}else{
 				$keyboard.fadeOut();
 			}
 		});
+		
+		function onBlur(){
+			//remove focus
+			target( null );
+		}
 		//set default state of the keyboard
 		$keyboard[ target() ? "show" : "hide" ]();
+		
+		//prevent tapping on the keyboard to cause the target from losing input
+		self.element.on("mousedown mouseup touchstart touchend click", function(evt){evt.preventDefault()});
 		
 		//listen for events on our keys
 		self.element.find("[data-keyboard-key]").on("click", function( evt ){
