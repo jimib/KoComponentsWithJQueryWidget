@@ -23,7 +23,7 @@ $.widget("pixel.pinpad", {
 		viewModel : null
 	},
 	submit : function(){
-		this.element.parents("pinpad").trigger("submit", this.viewModel.input());
+		this.element.parents("pinpad").trigger("submit", this.viewModel().input());
 	},
 	viewModel : function(){
 		return (this.options || {}).viewModel;
