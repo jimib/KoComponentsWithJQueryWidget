@@ -35,11 +35,11 @@ $.widget("pixel.keyboard", {
 		//if the target changes then we change the state of the keyboard
 		target.subscribe(function(value){
 			if( value ){
-				$keyboard.fadeIn();
+				$keyboard.show();
 				//add binding
 				$( target() ).bind("blur", onBlur );
 			}else{
-				$keyboard.fadeOut();
+				$keyboard.hide();
 			}
 		});
 		
